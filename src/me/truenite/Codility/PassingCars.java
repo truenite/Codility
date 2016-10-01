@@ -18,7 +18,7 @@ public class PassingCars {
             }
             // This if can go inside or outside the loop for codility's
             // performance tests it doesn't matter.
-            if (result>1000000000) {
+            if (result > 1000000000) {
                 return -1;
             }
         }
