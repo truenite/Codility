@@ -1,4 +1,4 @@
-package me.truenite;
+package me.truenite.Codility;
 
 public class PassingCars {
 
