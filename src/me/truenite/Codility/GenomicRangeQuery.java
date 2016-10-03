@@ -6,7 +6,9 @@
  * There's three solutions in this file. BruteForce, Saving an object Rage in a 
  * List and saving the last seen of the number in an array.
  * 
- * BF performance fails every test.
+ * The three of them are 100% correct.
+ * 
+ * BF fails every performance test.
  * LinkedList performance fails large_random test (87% overall score)
  * Last seen gets 100%
  *
