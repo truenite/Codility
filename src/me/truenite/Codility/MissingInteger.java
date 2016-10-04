@@ -1,5 +1,5 @@
 /**
- * PassingCars.java
+ * MissingInteger.java
  * Oct 3, 2016
  * @author Diego Garcia
  * 
@@ -21,29 +21,29 @@
  */
 package me.truenite.Codility;
 
-public class PassingCars {
+import java.util.Set;
+import java.util.TreeSet;
+
+public class MissingInteger {
 
     public static void main(String[] args) {
-        int[] A = { 0, 1, 0, 1, 1 };
-        System.out.println(solution(A));
+        int[] arr = { 1, 3, 6, 4, 1, 2 };
+        System.out.println(solution(arr));
+
     }
 
     public static int solution(int[] A) {
-        int result = 0;
-        int mult = 0;
+        Set<Integer> set = new TreeSet<Integer>();
         for (int i = 0; i < A.length; i++) {
-            if (A[i] == 0) {
-                mult++;
-            } else {
-                result += mult;
-            }
-            // This if can go inside or outside the loop for codility's
-            // performance tests it doesn't matter.
-            if (result > 1000000000) {
-                return -1;
+            if (A[i] > 0) {
+                set.add(A[i]);
             }
         }
-        return result;
+        for (int i = 1; i <= A.length + 1; i++) {
+            if (!set.contains(i))
+                return i;
+        }
+        return 1;
     }
 
 }

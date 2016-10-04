@@ -1,5 +1,5 @@
 /**
- * PassingCars.java
+ * BinaryGap.java
  * Oct 3, 2016
  * @author Diego Garcia
  * 
@@ -21,29 +21,31 @@
  */
 package me.truenite.Codility;
 
-public class PassingCars {
-
+public class BinaryGap {
     public static void main(String[] args) {
-        int[] A = { 0, 1, 0, 1, 1 };
-        System.out.println(solution(A));
+        int N = 1041;
+        System.out.println(solution(N));
+
     }
 
-    public static int solution(int[] A) {
-        int result = 0;
-        int mult = 0;
-        for (int i = 0; i < A.length; i++) {
-            if (A[i] == 0) {
-                mult++;
-            } else {
-                result += mult;
+    public static int solution(int N) {
+        int max = 0;
+        int count = 0;
+        boolean started = false;
+        while (N > 0) {
+            if (N % 2 == 0 && started) {
+                count++;
             }
-            // This if can go inside or outside the loop for codility's
-            // performance tests it doesn't matter.
-            if (result > 1000000000) {
-                return -1;
+            if (N % 2 == 1) {
+                started = true;
+                if (count > max) {
+                    max = count;
+                }
+                count = 0;
             }
+            N = N / 2;
         }
-        return result;
+        return max;
     }
 
 }

@@ -1,5 +1,5 @@
 /**
- * PassingCars.java
+ * OddOccurrencesInArray.java
  * Oct 3, 2016
  * @author Diego Garcia
  * 
@@ -21,29 +21,30 @@
  */
 package me.truenite.Codility;
 
-public class PassingCars {
+public class CyclicRotation {
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
-        int[] A = { 0, 1, 0, 1, 1 };
-        System.out.println(solution(A));
+        int[] A = { 1, 2, 3, 4, 5, 6 };
+        int[] B = solution(A, 1);
+        for (int i = 0; i < B.length; i++) {
+            System.out.print(B[i] + " ");
+        }
     }
 
-    public static int solution(int[] A) {
-        int result = 0;
-        int mult = 0;
+    public static int[] solution(int[] A, int K) {
+        int[] B = new int[A.length];
         for (int i = 0; i < A.length; i++) {
-            if (A[i] == 0) {
-                mult++;
-            } else {
-                result += mult;
+            int index = i + K;
+            while (index >= A.length) {
+                index -= A.length;
             }
-            // This if can go inside or outside the loop for codility's
-            // performance tests it doesn't matter.
-            if (result > 1000000000) {
-                return -1;
-            }
+            B[index] = A[i];
         }
-        return result;
+
+        return B;
     }
 
 }

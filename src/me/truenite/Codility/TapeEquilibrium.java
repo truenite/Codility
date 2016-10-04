@@ -1,5 +1,5 @@
 /**
- * PassingCars.java
+ * TapeEquilibrium.java
  * Oct 3, 2016
  * @author Diego Garcia
  * 
@@ -21,26 +21,27 @@
  */
 package me.truenite.Codility;
 
-public class PassingCars {
+public class TapeEquilibrium {
 
     public static void main(String[] args) {
-        int[] A = { 0, 1, 0, 1, 1 };
-        System.out.println(solution(A));
+        int[] arr = { 3, 1, 2, 4, 3 };
+        System.out.println(solution(arr));
     }
 
     public static int solution(int[] A) {
-        int result = 0;
-        int mult = 0;
-        for (int i = 0; i < A.length; i++) {
-            if (A[i] == 0) {
-                mult++;
-            } else {
-                result += mult;
-            }
-            // This if can go inside or outside the loop for codility's
-            // performance tests it doesn't matter.
-            if (result > 1000000000) {
-                return -1;
+        int left = A[0];
+        int right = 0;
+        for (int i = 1; i < A.length; i++) {
+            right += A[i];
+        }
+        int result = Math.abs(left - right);
+        for (int i = 1; i < A.length - 1; i++) {
+            right -= A[i];
+            left += A[i];
+            int temp = Math.abs(left - right);
+            // System.out.println(temp);
+            if (temp < result) {
+                result = temp;
             }
         }
         return result;

@@ -1,5 +1,5 @@
 /**
- * PassingCars.java
+ * PermCheck.java
  * Oct 3, 2016
  * @author Diego Garcia
  * 
@@ -21,29 +21,28 @@
  */
 package me.truenite.Codility;
 
-public class PassingCars {
+public class PermCheck {
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
-        int[] A = { 0, 1, 0, 1, 1 };
-        System.out.println(solution(A));
+        int[] case1 = { 1, 2, 3, 2, 5, 6, 7 };
+        System.out.println(solution(case1));
+        int[] case2 = { 1, 2, 3, 4, 5, 6 };
+        System.out.println(solution(case2));
+
     }
 
     public static int solution(int[] A) {
         int result = 0;
-        int mult = 0;
-        for (int i = 0; i < A.length; i++) {
-            if (A[i] == 0) {
-                mult++;
-            } else {
-                result += mult;
-            }
-            // This if can go inside or outside the loop for codility's
-            // performance tests it doesn't matter.
-            if (result > 1000000000) {
-                return -1;
-            }
+        for (int i = 1; i <= A.length; i++) {
+            result = result ^ A[i - 1] ^ i;
         }
-        return result;
+        if (result == 0) {
+            return 1;
+        } else
+            return 0;
     }
 
 }

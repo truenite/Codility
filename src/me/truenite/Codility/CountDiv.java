@@ -2,11 +2,11 @@ package me.truenite.Codility;
 
 /**
  * CountDiv.java
+ * 
  * @author dgarcia
  * @date Sep 30, 2016
  *
  */
-import java.util.*;
 
 public class CountDiv {
 

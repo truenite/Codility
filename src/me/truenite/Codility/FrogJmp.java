@@ -1,5 +1,5 @@
 /**
- * PassingCars.java
+ * FrogJmp.java
  * Oct 3, 2016
  * @author Diego Garcia
  * 
@@ -21,27 +21,24 @@
  */
 package me.truenite.Codility;
 
-public class PassingCars {
+public class FrogJmp {
 
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
-        int[] A = { 0, 1, 0, 1, 1 };
-        System.out.println(solution(A));
+        int X = 10;
+        int Y = 85;
+        int D = 30;
+        System.out.println(solution(X, Y, D));
+
     }
 
-    public static int solution(int[] A) {
-        int result = 0;
-        int mult = 0;
-        for (int i = 0; i < A.length; i++) {
-            if (A[i] == 0) {
-                mult++;
-            } else {
-                result += mult;
-            }
-            // This if can go inside or outside the loop for codility's
-            // performance tests it doesn't matter.
-            if (result > 1000000000) {
-                return -1;
-            }
+    public static int solution(int X, int Y, int D) {
+        Y -= X;
+        int result = Y / D;
+        if (Y % D > 0) {
+            result++;
         }
         return result;
     }
